@@ -1,7 +1,8 @@
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { BaseModel } from './base.entity';
 
 @Table
-export class PinCode extends Model<PinCode> {
+export class PinCode extends BaseModel<PinCode> {
   @Column({
     type: DataType.STRING,
     allowNull: false,
