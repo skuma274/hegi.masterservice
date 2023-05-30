@@ -1,4 +1,4 @@
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { Table, Column, DataType } from 'sequelize-typescript';
 import { BaseModel } from './base.entity';
 
 @Table
