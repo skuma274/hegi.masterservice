@@ -1,9 +1,8 @@
-import { Sequelize } from 'sequelize-typescript';
-import { PinCode } from '../entities/pincode.entity';
 import { DatabaseService } from './database.service';
+import { DataSource } from 'typeorm';
 
-export const sequelizeConnect = async (databaseService: DatabaseService): Promise<Sequelize> => {
-  const sequelize = new Sequelize(databaseService.sequelizeOrmConfig);
-  sequelize.addModels([PinCode]);
-  return sequelize;
-};
+
+export const typOrmConnect = async (databaseService: DatabaseService): Promise<DataSource> =>  {
+  const dataSource = new DataSource(databaseService.typeOrmConfig);
+  return dataSource.initialize();
+}

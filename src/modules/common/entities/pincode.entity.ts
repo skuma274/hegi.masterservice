@@ -1,16 +1,16 @@
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
+import { BaseEntity } from './base.entity';
 
-@Table
-export class PinCode extends Model<PinCode> {
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
+@Entity()
+export class PinCode extends BaseEntity {
+
+  @PrimaryGeneratedColumn()
+  id: number
+
+  @Column({length:50})
   name: string;
-  @Column({
-    type: DataType.STRING,
-    unique: true,
-    allowNull: false,
-  })
+
+  @Column({length:10,unique:true})
   code: string;
+
 }

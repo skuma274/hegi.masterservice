@@ -1,19 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { Repository } from 'typeorm';
 import { PinCode } from '../common/entities/pincode.entity';
-import { IPinCodeRepo, PinCodeRepo } from '../common/repositorites/pincode.repo';
 
 @Injectable()
 export class PinCodeService {
-  private pincodeRepository: IPinCodeRepo;
-  constructor() {
-    this.pincodeRepository = new PinCodeRepo(PinCode);
-  }
+  constructor(@Inject('PINCODE_REPOSITORY') private pincodeRepository:Repository<PinCode>){}
 
   async list(): Promise<PinCode[]> {
-    return await this.pincodeRepository.findAll();
+    return await this.pincodeRepository.find();
   }
 
   async findByCode(code: string): Promise<PinCode> {
-    return await this.pincodeRepository.findOne({ code });
+    return await this.pincodeRepository.findOneBy({code});
   }
+
 }

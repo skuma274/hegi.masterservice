@@ -21,7 +21,11 @@
     "prepare": "husky install",
     "migrate:generate": "npx ts-node ./db/migration.generate.ts",
     "migrate": "npx sequelize-cli db:migrate",
-    "migrate:rollback": "npx sequelize-cli db:migrate:undo"
+    "migrate:rollback": "npx sequelize-cli db:migrate:undo",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "typeorm:run-migrations": "npm run typeorm migration:run -- -d db/typeOrm.config.ts",
+    "typeorm:generate-migration": "npm run typeorm -- -d db/typeOrm.config.ts migration:generate db/migrations/migration",
+    "typeorm:revert-migration": "npm run typeorm -- -d db/typeOrm.config.ts migration:revert"
   },
   "dependencies": {
     "@nestjs/axios": "^2.0.0",
@@ -31,6 +35,7 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/terminus": "^9.2.2",
+    "@nestjs/typeorm": "^9.0.1",
     "axios": "^1.4.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
@@ -43,6 +48,7 @@
     "rxjs": "^7.2.0",
     "sequelize-typescript": "^2.1.5",
     "sequelize-typescript-migration-lts": "^3.2.5",
+    "typeorm": "^0.3.16",
     "winston": "^3.8.2",
     "winston-daily-rotate-file": "^4.7.1"
   },
