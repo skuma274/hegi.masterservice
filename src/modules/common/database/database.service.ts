@@ -3,11 +3,10 @@ import { Injectable } from '@nestjs/common';
 import { DataSourceOptions } from 'typeorm';
 import { PinCode } from '../entities/pincode.entity';
 
-
 @Injectable()
 export class DatabaseService {
   constructor(private readonly configService: ConfigService) {}
-  get typeOrmConfig():DataSourceOptions {
+  get typeOrmConfig(): DataSourceOptions {
     return {
       type: 'postgres',
       host: this.configService.get<string>('db.postgres.host'),
@@ -15,10 +14,8 @@ export class DatabaseService {
       username: this.configService.get<string>('db.postgres.username'),
       password: this.configService.get<string>('db.postgres.password'),
       database: this.configService.get<string>('db.postgres.name'),
-      entities: [
-          __dirname + '/../**/*.entity{.ts,.js}',
-      ],
-      //entities:[PinCode],
+      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+      // entities:[PinCode],
       synchronize: true,
     };
   }

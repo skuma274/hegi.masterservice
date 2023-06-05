@@ -4,14 +4,13 @@ import { PinCode } from '../common/entities/pincode.entity';
 
 @Injectable()
 export class PinCodeService {
-  constructor(@Inject('PINCODE_REPOSITORY') private pincodeRepository:Repository<PinCode>){}
+  constructor(@Inject('PINCODE_REPOSITORY') private pincodeRepository: Repository<PinCode>) {}
 
   async list(): Promise<PinCode[]> {
     return await this.pincodeRepository.find();
   }
 
   async findByCode(code: string): Promise<PinCode> {
-    return await this.pincodeRepository.findOneBy({code});
+    return await this.pincodeRepository.findOneBy({ code });
   }
-
 }

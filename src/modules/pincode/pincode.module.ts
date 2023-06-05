@@ -10,11 +10,14 @@ import { TYPEORM } from 'src/constants';
 @Module({
   imports: [DatabaseModule],
   controllers: [PinCodeController],
-  providers: [PinCodeService, {
-    provide: 'PINCODE_REPOSITORY',
-    useFactory: (dataSource: DataSource) => dataSource.getRepository(PinCode),
-    inject: [TYPEORM],
-  }],
+  providers: [
+    PinCodeService,
+    {
+      provide: 'PINCODE_REPOSITORY',
+      useFactory: (dataSource: DataSource) => dataSource.getRepository(PinCode),
+      inject: [TYPEORM],
+    },
+  ],
   exports: [PinCodeService],
 })
 export class PinCodeModule {}

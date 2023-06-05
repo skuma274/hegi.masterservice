@@ -7,7 +7,7 @@ import { PinCodeModule } from './modules/pincode/pincode.module';
 import { HealthModule } from './shared/health/health.module';
 import { LoggerService } from './shared/logger/logger.service';
 import Config from './configs';
-//import { DatabaseModule } from './modules/common/database/database.module';
+// import { DatabaseModule } from './modules/common/database/database.module';
 
 const logFormat = winston.format.printf((msg) => {
   return `[${msg.timestamp}] [${msg.level}] [expressRequestId=${uuid()}]: ${msg.message}`;
@@ -47,7 +47,7 @@ const logFormat = winston.format.printf((msg) => {
     }),
     PinCodeModule,
     HealthModule,
-    //DatabaseModule
+    // DatabaseModule
   ],
   providers: [LoggerService],
 })
